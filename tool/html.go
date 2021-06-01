@@ -55,3 +55,14 @@ func GetHtmlVideo(str string) []string {
 	}
 	return  arr
 }
+
+func GetHtmlTitle(str string) string {
+	reg := regexp.MustCompile(`<title>(.*)</title>`)
+	result := reg.FindAllStringSubmatch(str, -1)
+	if len(result)>0{
+		if len(result[0])>1{
+			return result[0][1]
+		}
+	}
+	return ""
+}
